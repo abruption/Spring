@@ -1,20 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>${id}</title>
+    <title>${title}</title>
 
-    <link type="text/css" rel="stylesheet"
-          href="resource/res/css/sample.css" />
+    <link type="text/css" rel="stylesheet" href="resource/res/css/sample.css" />
 
+    <script src="http://code.jquery.com/jquery-Latest.min.js"></script>
     <script type="text/javaScript" language="javascript" defer="defer">
+        $(function(){
+            for(i=0; i<${num}; i++)
+                $("#tb").append('<tr> <td align="center" class="listtd">1</td><td align="center" class="listtd"><a href="">C</a></td><td align="left" class="listtd">1학년&nbsp;</td><td align="center" class="listtd">Y&nbsp;</td><td align="center" class="listtd">일반과목&nbsp;</td><td align="center" class="listtd">관리자&nbsp;</td></tr>');
+        });
     </script>
+
 </head>
 
-<body
-        style="text-align: center; margin: 0 auto; display: inline; padding-top: 100px;">
+
+<body style="text-align: center; margin: 0 auto; display: inline; padding-top: 100px;">
 <form id="listForm" name="listForm" action="/sample/" method="post">
     <input type="hidden" name="selectedId" />
     <div id="content_pop">
@@ -23,9 +27,12 @@
             <ul>
                 <li><img src="/resource/res/img/title_dot.gif" alt="" />과목 목록</li>
             </ul>
+            <ul>
+                <li>페이지 방문수 : ${count}</li>
+            </ul>
         </div>
         <!-- // 타이틀 -->
-        <div id="search">
+        <div id="search"> 
             <ul>
                 <li><label for="searchCondition" style="visibility: hidden;">검색어
                     선택</label> <select id="searchCondition" name="searchCondition"
@@ -37,16 +44,15 @@
                            style="visibility: hidden; display: none;">검색어 입력</label> <input
                         id="searchKeyword" name="searchKeyword" class="txt" type="text"
                         value="" /></li>
-                <li><span class="btn_blue_l"> <a href="">검색</a> <img
-                        src="/resource/res/img/btn_bg_r.gif" style="margin-left: 6px;"
-                        alt="" />
-					</span></li>
+                <li><span class="btn_blue_l"> <a href="">검색</a>
+                    <img src="/resource/res/img/btn_bg_r.gif" style="margin-left: 6px;" alt="" />
+					</span>
+                </li>
             </ul>
         </div>
         <!-- List -->
         <div id="table">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                   summary="">
+            <table id="tb" width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
                 <caption style="visibility: hidden"></caption>
                 <colgroup>
                     <col width="40" />

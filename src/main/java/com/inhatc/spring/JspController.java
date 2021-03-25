@@ -1,5 +1,7 @@
 package com.inhatc.spring;
 
+import com.inhatc.spring.BoardService.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +25,11 @@ public class JspController {
         return "data";
     }
 
-    @RequestMapping("/board")
-    public String board(Model model, @RequestParam(value="data", required = false, defaultValue = "제목없음")String id){
-        model.addAttribute("id", id);
-        return "board";
-    }
-
     @RequestMapping("/welcome")
     public String webcome(){
         return "welcome";
     }
 
+    @Autowired
+    BoardService boardService;
 }
