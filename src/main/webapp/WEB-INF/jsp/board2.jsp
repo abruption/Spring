@@ -63,14 +63,6 @@
                     <col width="?" />
                     <col width="60" />
                 </colgroup>
-                <tr>
-                    <th align="center">No</th>
-                    <th align="center">과목명</th>
-                    <th align="center">학년</th>
-                    <th align="center">개설여부</th>
-                    <th align="center">설명</th>
-                    <th align="center">등록자</th>
-                </tr>
 
                 <tr>
                     <td align="center" class="listtd">1</td>
@@ -81,86 +73,17 @@
                     <td align="center" class="listtd">관리자&nbsp;</td>
                 </tr>
 
-                <tr>
-                    <td align="center" class="listtd">2</td>
-                    <td align="center" class="listtd"><a href="">JAVA</a></td>
-                    <td align="left" class="listtd">2학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">심화과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
+                <c:forEach var="result" items="${subjectList}" varStatus="status">
+                    <tr>
+                        <td align="center" class="listtd"><c:out value="${result.ID}"/> </td>
+                        <td align="center" class="listtd"><c:out value="${result.SUBJECT}"/></td>
+                        <td align="left" class="listtd"><c:out value="${result.GRADE}"/>&nbsp;</td>
+                        <td align="center" class="listtd"><c:out value="${result.USE_YN}"/>&nbsp;</td>
+                        <td align="center" class="listtd"><c:out value="${result.DESCRIPTION}"/>&nbsp;</td>
+                        <td align="center" class="listtd"><c:out value="${result.REG_USER}"/>&nbsp;</td>
+                    </tr>
+                </c:forEach>
 
-                <tr>
-                    <td align="center" class="listtd">3</td>
-                    <td align="center" class="listtd"><a href="">node</a></td>
-                    <td align="left" class="listtd">2학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">응용과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td align="center" class="listtd">4</td>
-                    <td align="center" class="listtd"><a href="">자료구조</a></td>
-                    <td align="left" class="listtd">2학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">고급과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td align="center" class="listtd">5</td>
-                    <td align="center" class="listtd"><a href="">서버프로그래밍</a></td>
-                    <td align="left" class="listtd">3학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">필수과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td align="center" class="listtd">6</td>
-                    <td align="center" class="listtd"><a href="">진로상담</a></td>
-                    <td align="left" class="listtd">3학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">일반과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td align="center" class="listtd">7</td>
-                    <td align="center" class="listtd"><a href="">심화C</a></td>
-                    <td align="left" class="listtd">2학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">일반과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td align="center" class="listtd">8</td>
-                    <td align="center" class="listtd"><a href="">심화 JAVA</a></td>
-                    <td align="left" class="listtd">1학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">일반과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td align="center" class="listtd">9</td>
-                    <td align="center" class="listtd"><a href="">고급프로그래밍</a></td>
-                    <td align="left" class="listtd">2학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">일반과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td align="center" class="listtd">10</td>
-                    <td align="center" class="listtd"><a href="">서버프로그래밍2</a></td>
-                    <td align="left" class="listtd">1학년&nbsp;</td>
-                    <td align="center" class="listtd">Y&nbsp;</td>
-                    <td align="center" class="listtd">일반과목&nbsp;</td>
-                    <td align="center" class="listtd">관리자&nbsp;</td>
-                </tr>
 
             </table>
         </div>

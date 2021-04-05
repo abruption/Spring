@@ -1,6 +1,5 @@
-package com.inhatc.spring.BoardService;
+package com.inhatc.spring.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
