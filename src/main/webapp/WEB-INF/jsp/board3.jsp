@@ -10,21 +10,10 @@
 
     <script src="http://code.jquery.com/jquery-Latest.min.js"></script>
     <script type="text/javaScript" language="javascript" defer="defer">
-
-        function fn_search(){
-            document.listForm.action = '/testdb.do';
-            document.listForm.submit();
-        }
-
-        function fn_select(id){
-            document.listForm.action = '/boardDetail.do?no='+id;
-            document.listForm.submit();
-        }
-
-        function fn_page_search(page){
-            document.listForm.action = '/testdb.do?page='+page;
-            document.listForm.submit();
-        }
+        $(function(){
+            for(i=0; i<${num}; i++)
+                $("#tb").append('<tr> <td align="center" class="listtd">1</td><td align="center" class="listtd"><a href="">C</a></td><td align="left" class="listtd">1학년&nbsp;</td><td align="center" class="listtd">Y&nbsp;</td><td align="center" class="listtd">일반과목&nbsp;</td><td align="center" class="listtd">관리자&nbsp;</td></tr>');
+        });
     </script>
 
 </head>
@@ -37,7 +26,10 @@
         <!-- 타이틀 -->
         <div id="title">
             <ul>
-                <li><img src="/resource/res/img/title_dot.gif" alt="" />과목 목록 ${count}</li>
+                <li><img src="/resource/res/img/title_dot.gif" alt="" />과목 목록</li>
+            </ul>
+            <ul>
+                <li>과목수 : ${count}</li>
             </ul>
         </div>
         <!-- // 타이틀 -->
@@ -83,12 +75,12 @@
 
                 <c:forEach var="result" items="${subjectList}" varStatus="status">
                     <tr>
-                        <td align="center" class="listtd"><c:out value="${result.ID}"/> </td>
-                        <td align="center" class="listtd"><a href="javascript:fn_select('${result.ID}')"> <c:out value="${result.SUBJECT}"/></a></td>
-                        <td align="left" class="listtd"><c:out value="${result.GRADE}"/>&nbsp;</td>
-                        <td align="center" class="listtd"><c:out value="${result.USE_YN}"/>&nbsp;</td>
-                        <td align="center" class="listtd"><c:out value="${result.DESCRIPTION}"/>&nbsp;</td>
-                        <td align="center" class="listtd"><c:out value="${result.REG_USER}"/>&nbsp;</td>
+                        <td align="center" class="listtd"><c:out value="${result.id}"/> </td>
+                        <td align="center" class="listtd"><c:out value="${result.subject}"/></td>
+                        <td align="left" class="listtd"><c:out value="${result.grade}"/>&nbsp;</td>
+                        <td align="center" class="listtd"><c:out value="${result.useYn}"/>&nbsp;</td>
+                        <td align="center" class="listtd"><c:out value="${result.description}"/>&nbsp;</td>
+                        <td align="center" class="listtd"><c:out value="${result.regUser}"/>&nbsp;</td>
                     </tr>
                 </c:forEach>
 
@@ -97,13 +89,13 @@
         </div>
         <!-- /List -->
         <div id="paging">
-            <a href="javascript:fn_page_search(1)" onclick="; return false;"><image
+            <a href="#" onclick="; return false;"><image
                     src=/resource/res/img/btn_page_pre10.gif border=0 /></a>&#160;<a
                 href="#" onclick=""><image
                 src=/resource/res/img/btn_page_pre1.gif border=0 /></a>&#160;<strong>1</strong>&#160;<a
-                href="javascript:fn_page_search(2)" onclick="">2</a>&#160;<a href="javascript:fn_page_search(3)" onclick="">3</a>&#160;<a
-                href="javascript:fn_page_search(4)" onclick="">4</a>&#160;<a href="" onclick="">5</a>&#160;<a
-                href="" onclick="">6</a>&#160;<a href="#" onclick="">7</a>&#160;<a
+                href="#" onclick="">2</a>&#160;<a href="#" onclick="">3</a>&#160;<a
+                href="#" onclick="">4</a>&#160;<a href="#" onclick="">5</a>&#160;<a
+                href="#" onclick="">6</a>&#160;<a href="#" onclick="">7</a>&#160;<a
                 href="#" onclick="">8</a>&#160;<a href="#" onclick="">9</a>&#160;<a
                 href="#" onclick="">10</a>&#160;<a href="#" onclick=""><image
                 src=/resource/res/img/btn_page_next1.gif border=0 /></a>&#160;<a

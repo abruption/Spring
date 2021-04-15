@@ -8,13 +8,63 @@
     <select resultType="String" id="getName">select member from test </select>
 
 
-    <select resultType="hashmap" id="selectSubjectList" parameterType="String">
+    <select resultType="hashmap" id="selectSubjectList" parameterType="hashmap">
         SELECT
         ID, SUBJECT, GRADE, DESCRIPTION, USE_YN, REG_USER
         FROM
         SAMPLE
         WHERE 1=1
+        <if test="value != null and value != ''"> AND subject LIKE CONCAT('%',#{keyword} ,'%') </if>
+        LIMIT #{page}, 3
+    </select>
+
+    <select resultType="map" id="selectSubjectList2" parameterType="String">
+        SELECT
+        id, subject, grade, description, USE_YN useYn, REG_USER regUser
+        FROM
+        SAMPLE
+        WHERE 1=1
+        <if test="value != null and value != ''"> AND subject LIKE CONCAT('%',#{value} ,'%') </if>
+
+    </select>
+
+    <select resultType="int" id="selectSubjectListCount" parameterType="String">
+        SELECT
+        COUNT(ID)
+        FROM
+        SAMPLE
+        WHERE 1=1
         <if test="value != null and value != ''"> AND subject LIKE CONCAT('%',#{value} ,'%') </if>
     </select>
+
+    <insert id="insertSubject">
+        INSERT INTO SAMPLE
+        (SUBJECT, GRADE, USE_YN, DESCRIPTION, REG_USER)
+        VALUES
+        (#{subject}, #{grade}, #{use_Yn}, #{description}, #{reg_User})
+    </insert>
+
+    <select resultType="hashmap" id="selectDetail" parameterType="String">
+        SELECT
+            ID, SUBJECT, GRADE, DESCRIPTION, USE_YN, REG_USER
+        FROM SAMPLE
+        WHERE ID=#{value}
+    </select>
+
+    <update id="modifySubject" parameterType="Map">
+        UPDATE SAMPLE
+        SET
+            SUBJECT     = #{subject},
+            GRADE       = #{grade},
+            USE_YN      = #{useYn},
+            DESCRIPTION = #{description},
+            REG_USER    = #{regUser}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="deleteSubject" parameterType="String">
+        DELETE FROM SAMPLE
+        WHERE ID = #{value}
+    </delete>
 
 </mapper>
