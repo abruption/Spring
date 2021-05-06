@@ -17,4 +17,12 @@ public class MarketService {
     public MemberDto processLoginMember(MemberDto dto) throws Exception{
         return marketMapper.processLoginMember(dto);
     }
+
+    public MemberDto processMemberInfo(MemberDto dto) throws Exception{
+        return marketMapper.processMemberInfo(dto);
+    }
+
+    public int processUpdateMember(MemberDto dto) throws Exception{
+        return marketMapper.processUpdateMember(dto);
+    }
 }

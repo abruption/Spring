@@ -55,4 +55,5 @@ public class BoardDto {
     public void setRegUser(String regUser) {
         this.regUser = regUser;
     }
+
 }

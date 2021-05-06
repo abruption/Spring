@@ -10,35 +10,23 @@
 
 			var now = new Date();
 
-			var year = now.getFullYear(); //년
-			var month = now.getMonth()+1; //월
-			var day = now.getDate();  //일
-			var hour = now.getHours();  //시
-			var min = now.getMinutes();  //분
-			var sec = now.getSeconds();  //초
-			var ampm = null;
-
+			var year = now.getFullYear(); 	// 년
+			var month = now.getMonth()+1; 	// 월
+			var day = now.getDate();  		// 일
+			var hour = now.getHours();  	// 시
+			var min = now.getMinutes();  	// 분
+			var sec = now.getSeconds();  	// 초
 
 			if(month < 10)
 				month = "0" + month;
-
-
 			if(day < 10)
 				day = "0" + day;
-
-
 			if (hour<10)
 				hour = "0" + hour;
-
-
 			if (min < 10)
 				min = "0" + min;
-
-
 			if (sec < 10)
 				sec = "0" + sec;
-
-
 
 			document.getElementById("time").innerHTML
 					= year+"-"+ month+"-"+day+" "+hour+":"+min+":"+sec
@@ -63,22 +51,6 @@
 				<%=tagline%>
 			</h3>
 			현재 접속 시각 : <span id="time"></span>
-<%--			<%--%>
-<%--				response.setIntHeader("Refresh", 5);--%>
-<%--				Date day = new java.util.Date();--%>
-<%--				String am_pm;--%>
-<%--				int hour = day.getHours();--%>
-<%--				int minute = day.getMinutes();--%>
-<%--				int second = day.getSeconds();--%>
-<%--				if (hour / 12 == 0) {--%>
-<%--					am_pm = "AM";--%>
-<%--				} else {--%>
-<%--					am_pm = "PM";--%>
-<%--					hour = hour - 12;--%>
-<%--				}--%>
-<%--				String CT = hour + ":" + minute + ":" + second + " " + am_pm;--%>
-<%--				out.println("현재 접속  시각: " + CT + "\n");--%>
-<%--			%>--%>
 		</div>
 		<hr>
 	</div>	

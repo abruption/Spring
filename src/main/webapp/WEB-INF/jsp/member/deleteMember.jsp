@@ -5,16 +5,17 @@
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
 <sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost:3306/WebMarketDB"
-	driver="com.mysql.jdbc.Driver" user="root" password="1234" />
+	url="jdbc:mysql://152.67.192.35:3306/spring"
+	driver="com.mysql.cj.jdbc.Driver" user="admin" password="lmyykr25" />
+
 
 <sql:update dataSource="${dataSource}" var="resultSet">
-   DELETE FROM member WHERE id = ?
-   <sql:param value="<%=sessionId%>" />
+   DELETE FROM SHOP_MEMBER WHERE id = ?
+	<sql:param value="<%=sessionId%>" />
 </sql:update>
 
 <c:if test="${resultSet>=1}">
-	<c:import var="url" url="logoutMember.jsp" />
-	<c:redirect url="resultMember.jsp" />
+	<c:import var="url" url="/member/logoutMember.do" />
+	<c:redirect url="/member/resultMember.do" />
 </c:if>
 
