@@ -30,4 +30,16 @@
             WHERE id = #{id}
     </update>
 
+    <insert id="processAddProduct" parameterType="com.inhatc.spring.DTO.ProductDto">
+        INSERT INTO SHOP_PRODUCT VALUES
+        (#{productId}, #{pname}, #{unitPrice}, #{description}, #{manufacturer}, #{category}, #{unitsInStock}, #{condition}, #{fileName}, #{quantity}, now())
+    </insert>
+
+    <select id="listProducts" parameterType="com.inhatc.spring.DTO.ProductDto" resultType="com.inhatc.spring.DTO.ProductDto">
+        SELECT PRODUCT_ID productId, pname, UNIT_PRICE unitPrice, description, manufacturer, category, UNITS_IN_STOCK unitsInStock, 'condition', FILE_NAME fileName, quantity FROM SHOP_PRODUCT
+        <if test="productId != null and productId != '' ">
+            WHERE PRODUCT_ID = #{productId}
+        </if>
+    </select>
+
 </mapper>

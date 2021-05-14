@@ -1,22 +1,29 @@
 package com.inhatc.spring.Controller;
 
 import com.inhatc.spring.DTO.MemberDto;
+import com.inhatc.spring.DTO.ProductDto;
 import com.inhatc.spring.Service.MarketService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import sun.reflect.annotation.ExceptionProxy;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class MarketController {
     @Autowired
     MarketService marketService;
+
+    private static final Logger Log = LoggerFactory.getLogger(MarketService.class);
 
     @RequestMapping("/welcome.do")
     public ModelAndView welcome(HttpServletRequest request) {
@@ -109,4 +116,37 @@ public class MarketController {
         mv.setViewName("/member/resultMember");
         return mv;
     }
+
+    // addProduct.do
+    @RequestMapping("/addProduct.do")
+    public ModelAndView addProduct(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/addProduct");
+        HttpSession session = request.getSession();
+        mv.addObject("sessionId", session.getAttribute("sessionId"));
+        return mv;
+    }
+
+    @RequestMapping("/product/processAddProduct.do")
+    public ModelAndView processAddProduct(ProductDto dto, HttpServletRequest request, MultipartFile productImage) throws Exception{
+        Log.warn(dto.toString());
+        Log.info(productImage.getName());
+        marketService.saveImage(dto, productImage);
+        marketService.processAddProduct(dto);
+
+        return addProduct(request);
+    }
+
+    @RequestMapping("/products.do")
+    public ModelAndView products(HttpServletRequest request) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/products");
+        HttpSession session = request.getSession();
+        List<ProductDto> list = marketService.listProducts(null);
+        Log.info(list.toString());
+        mv.addObject("sessionId", session.getAttribute("sessionId"));
+        mv.addObject("list", list);
+        return mv;
+    }
+
 }
