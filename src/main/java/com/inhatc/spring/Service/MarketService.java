@@ -43,12 +43,23 @@ public class MarketService {
     }
 
     public void saveImage(ProductDto dto, MultipartFile productImage) throws Exception {
-        File file = new File(rootPath+ "/" + productImage.getOriginalFilename());
-        productImage.transferTo(file);
-        dto.setFileName(urlPath + file.getName());
+        try {
+            File file = new File(rootPath + "/" + productImage.getOriginalFilename());
+            productImage.transferTo(file);
+            dto.setFileName(urlPath + file.getName());
+        } catch (Exception e){
+        }
     }
 
     public List<ProductDto> listProducts(ProductDto dto) throws Exception{
         return marketMapper.listProducts(dto);
+    }
+
+    public ProductDto getProduct(ProductDto dto) throws Exception{
+        return marketMapper.getProduct(dto);
+    }
+
+    public int processUpdateProduct(ProductDto dto) throws Exception{
+        return marketMapper.processUpdateProduct(dto);
     }
 }

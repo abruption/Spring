@@ -140,7 +140,7 @@ public class MarketController {
     @RequestMapping("/products.do")
     public ModelAndView products(HttpServletRequest request) throws Exception{
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/products");
+        mv.setViewName("products");
         HttpSession session = request.getSession();
         List<ProductDto> list = marketService.listProducts(null);
         Log.info(list.toString());
@@ -149,4 +149,56 @@ public class MarketController {
         return mv;
     }
 
+    @RequestMapping("/editProduct.do")
+    public ModelAndView editProduct(HttpServletRequest request) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("editProduct");
+        List<ProductDto> list = marketService.listProducts(null);
+        Log.info(list.toString());
+        HttpSession session = request.getSession();
+        mv.addObject("sessionId", session.getAttribute("sessionId"));
+        mv.addObject("list", list);
+        return mv;
+    }
+
+    @RequestMapping("/updateProduct.do")
+    public ModelAndView updateProduct(HttpServletRequest request, ProductDto dto) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("updateProduct");
+        Log.info(dto.toString());
+        dto = marketService.getProduct(dto);
+        Log.info(dto.toString());
+        mv.addObject("dto", dto);
+        HttpSession session = request.getSession();
+        mv.addObject("sessionId", session.getAttribute("sessionId"));
+        return mv;
+    }
+
+    @RequestMapping("/processUpdateProduct.do")
+    public ModelAndView processUpdateProduct(ProductDto dto, HttpServletRequest request, MultipartFile productImage) throws Exception{
+        Log.warn(dto.toString());
+        Log.info(productImage.getName());
+
+        marketService.saveImage(dto, productImage);
+        marketService.processUpdateProduct(dto);
+        return updateProduct(request, dto);
+    }
+
+    @RequestMapping("/deleteProduct.do")
+    public ModelAndView deleteProduct(HttpServletRequest request) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/deleteProduct");
+        return mv;
+    }
+
+    @RequestMapping("/detailProduct.do")
+    public ModelAndView detailProduct(HttpServletRequest request, ProductDto dto) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/detailProduct");
+        dto = marketService.getProduct(dto);
+        mv.addObject("dto", dto);
+        HttpSession session = request.getSession();
+        mv.addObject("sessionId", session.getAttribute("sessionId"));
+        return mv;
+    }
 }

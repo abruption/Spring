@@ -21,7 +21,7 @@
 				<h3>${result.pname}</h3>
 				<p>${result.description}
 				<p>${result.unitPrice}원
-				<p><a href="/product.do?productId=${result.productId}"class="btn btn-secondary" role="button">상세 정보 &raquo;></a>
+				<p><a href="/detailProduct.do?productId=${result.productId}"class="btn btn-secondary" role="button">상세 정보 &raquo;></a>
 				</c:forEach>	
 			</div>
 		</div>

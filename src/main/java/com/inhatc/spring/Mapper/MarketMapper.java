@@ -13,4 +13,6 @@ public interface MarketMapper {
     int processUpdateMember(MemberDto dto) throws Exception;
     int processAddProduct(ProductDto dto) throws Exception;
     List<ProductDto> listProducts(ProductDto dto) throws Exception;
+    ProductDto getProduct(ProductDto dto) throws Exception;
+    int processUpdateProduct(ProductDto dto) throws Exception;
 }
